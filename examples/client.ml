@@ -16,4 +16,18 @@ let () =
   Printf.printf "try to add 2 and 2\n%!";
   let n = c#add 2l 2l in
   Printf.printf "… 2+2 = %ld\n%!" n;
+  let open Tutorial_types in
+  let w = new work in
+  w#set_op Operation.ADD;
+  w#set_num1 41l;
+  w#set_num2 1l;
+  let n = c#calculate 42l
+      (let w = new work in
+       w#set_op Operation.ADD;
+       w#set_num1 41l;
+       w#set_num2 1l;
+       w)
+  in
+  (* TODO: a debug protocol to display the object [w] *)
+  Printf.printf "perform work: %ld\n%!" n;
   ()
